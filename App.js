@@ -41,6 +41,8 @@ const App = () => {
  const latitude = useRef()
  const longitude = useRef()
 
+ // get user location
+
   useEffect(() => {
     if (Platform.OS === 'android') {
       requestLocationPermission();
@@ -61,7 +63,7 @@ const App = () => {
 
   }, []);
 
-//console.log(location)
+
 if (location)
 {
 latitude.current = location.coords.latitude
