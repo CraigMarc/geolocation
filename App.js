@@ -75,7 +75,7 @@ console.log(longitude.current)
 
   return (
     <View style={styles.container}>
-      <Text>Check the console for the location data.</Text>
+      <Text>Your current location is:</Text>
       <Text>Latitude: {location ? location.coords.latitude : null}</Text>
       <Text>Longitude: {location ? location.coords.longitude : null}</Text>
     </View>
