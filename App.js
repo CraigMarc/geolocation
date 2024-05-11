@@ -50,7 +50,7 @@ const App = () => {
 
     Geolocation.getCurrentPosition(
       (position) => {
-       //console.log(position);
+      console.log(position);
       setLocation(position)
       },
       (error) => {
@@ -75,11 +75,14 @@ longitude.current = location.coords.longitude
 console.log(latitude.current)
 console.log(longitude.current)
 
+
   return (
     <View style={styles.container}>
-      <Text>Your current location is:</Text>
-      <Text>Latitude: {location ? location.coords.latitude : null}</Text>
-      <Text>Longitude: {location ? location.coords.longitude : null}</Text>
+      <Text style={styles.text}>Your current location is:</Text>
+      <Text style={styles.text}>Accuracy: {location ? location.coords.accuracy : null}</Text>
+      <Text style={styles.text}>Latitude: {location ? location.coords.latitude : null}</Text>
+      <Text style={styles.text}>Longitude: {location ? location.coords.longitude : null}</Text>
+      <Text style={styles.text}>Altitude: {location ? location.coords.altitude : null}</Text>
     </View>
   );
 };
@@ -89,7 +92,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+
   },
+  text: {
+      fontSize: 25,
+      fontWeight: 'bold',
+    },
 });
 
 export default App;
