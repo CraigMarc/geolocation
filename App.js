@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Geolocation from '@react-native-community/geolocation';
 //import {PermissionsAndroid} from 'react-native';
+import CompassHeading from 'react-native-compass-heading';
 
 import {
   SafeAreaView,
@@ -40,6 +41,7 @@ const App = () => {
  const [location, setLocation] = useState(false);
  const latitude = useRef()
  const longitude = useRef()
+ const [direction, setDirection] = useState();
 
  // get user location
 
@@ -50,7 +52,7 @@ const App = () => {
 
     Geolocation.getCurrentPosition(
       (position) => {
-      console.log(position);
+      //console.log(position);
       setLocation(position)
       },
       (error) => {
@@ -72,8 +74,21 @@ if (location) {
 longitude.current = location.coords.longitude
 }
 
-console.log(latitude.current)
-console.log(longitude.current)
+//console.log(latitude.current)
+//console.log(longitude.current)
+
+useEffect(() => {
+    const degree_update_rate = 3;
+
+    CompassHeading.start(degree_update_rate, ({heading, accuracy}) => {
+      console.log('CompassHeading: ', heading, accuracy);
+      setDirection(heading)
+    });
+
+    return () => {
+      CompassHeading.stop();
+    };
+  }, []);
 
 
   return (
@@ -83,6 +98,7 @@ console.log(longitude.current)
       <Text style={styles.text}>Latitude: {location ? location.coords.latitude : null}</Text>
       <Text style={styles.text}>Longitude: {location ? location.coords.longitude : null}</Text>
       <Text style={styles.text}>Altitude: {location ? location.coords.altitude : null}</Text>
+      <Text style={styles.text}>Heading: {direction}</Text>
     </View>
   );
 };
@@ -99,5 +115,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
 });
+
+
 
 export default App;
