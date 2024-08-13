@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import CompassHeading from "react-native-compass-heading";
 import { View, Text, StyleSheet, Image, Animated } from "react-native";
-import compassPic from './images/compass.png';
+import compassPic from './images/compassNew.png';
 
 const Compass = (props) => {
     const [heading, setHeading] = useState(0);
