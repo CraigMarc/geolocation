@@ -15,6 +15,8 @@ import {
   PermissionsAndroid,
 } from 'react-native';
 
+import Compass from './Compass'
+
 // request permission to use geolocation
 
 async function requestLocationPermission() {
@@ -81,7 +83,7 @@ useEffect(() => {
     const degree_update_rate = 3;
 
     CompassHeading.start(degree_update_rate, ({heading, accuracy}) => {
-      console.log('CompassHeading: ', heading, accuracy);
+      //console.log('CompassHeading: ', heading, accuracy);
       setDirection(heading)
     });
 
@@ -99,6 +101,10 @@ useEffect(() => {
       <Text style={styles.text}>Longitude: {location ? location.coords.longitude : null}</Text>
       <Text style={styles.text}>Altitude: {location ? location.coords.altitude : null}</Text>
       <Text style={styles.text}>Heading: {direction}</Text>
+     <Compass
+               direction={direction}
+
+             />
     </View>
   );
 };
