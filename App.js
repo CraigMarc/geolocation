@@ -108,12 +108,11 @@ useEffect(() => {
   return (
     <View style={styles.container}>
     {renderError()}
-      <Text style={styles.text}>Your current location is:</Text>
-      <Text style={styles.text}>Accuracy: {location ? location.coords.accuracy : null}</Text>
+
       <Text style={styles.text}>Latitude: {location ? location.coords.latitude : null}</Text>
       <Text style={styles.text}>Longitude: {location ? location.coords.longitude : null}</Text>
       <Text style={styles.text}>Altitude: {location ? location.coords.altitude : null}</Text>
-      <Text style={styles.text}>Heading: {direction}</Text>
+      <Text style={styles.text}>Accuracy: {location ? location.coords.accuracy : null}</Text>
      <Compass
                direction={direction}
 
@@ -126,7 +125,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    marginLeft: 10,
+    marginTop: 15,
 
   },
   text: {

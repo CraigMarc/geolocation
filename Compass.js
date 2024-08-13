@@ -32,11 +32,9 @@ const Compass = (props) => {
                     style={[styles.compassImage, rotateStyle]}
                 />
             </View>
-            <Text style={styles.headingValue}>{`Heading: ${direction
-            }°`}</Text>
-            <Text
-                style={styles.cardinalDirection}
-            >{`Direction: ${getCardinalDirection()}`}</Text>
+            <Text style={styles.headingValue}>{`${direction
+            }° ${getCardinalDirection()}`}</Text>
+
         </View>
     );
 };
@@ -44,9 +42,9 @@ const Compass = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        paddingTop: 30,
         alignItems: "center",
-        backgroundColor: "#f5f5f5",
+
     },
     appName: {
         fontSize: 24,
@@ -72,15 +70,12 @@ const styles = StyleSheet.create({
         height: 200,
     },
     headingValue: {
-        fontSize: 18,
+        fontSize: 30,
+        fontWeight: "bold",
         marginTop: 10,
         color: "#555",
     },
-    cardinalDirection: {
-        fontSize: 18,
-        marginTop: 10,
-        color: "#555",
-    },
+
 });
 
 export default Compass;
