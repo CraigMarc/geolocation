@@ -38,6 +38,8 @@ async function requestLocationPermission() {
   }
 }
 
+
+
 const App = () => {
 
  const [location, setLocation] = useState(false);
@@ -76,6 +78,16 @@ if (location) {
 longitude.current = location.coords.longitude
 }
 
+//message if no gps data available
+const renderError = () => {
+        if (location == false) {
+            return (
+                <Text>GPS data is not available</Text>
+            )
+        }
+
+    }
+
 //console.log(latitude.current)
 //console.log(longitude.current)
 
@@ -95,6 +107,7 @@ useEffect(() => {
 
   return (
     <View style={styles.container}>
+    {renderError()}
       <Text style={styles.text}>Your current location is:</Text>
       <Text style={styles.text}>Accuracy: {location ? location.coords.accuracy : null}</Text>
       <Text style={styles.text}>Latitude: {location ? location.coords.latitude : null}</Text>
